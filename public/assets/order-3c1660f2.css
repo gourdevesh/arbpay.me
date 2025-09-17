@@ -1,0 +1,184 @@
+.x-order .red[data-v-239525cb] {
+    color: #fe3434 !important
+}
+
+.x-order-header[data-v-239525cb] {
+    position: sticky;
+    top: 1.23077rem;
+    background-color: #fff;
+    z-index: 1000
+}
+
+.x-order-tab[data-v-239525cb] {
+    width: 100%;
+    height: 1.15385rem;
+    line-height: 1.15385rem;
+    font-size: .46154rem;
+    color: #a2a7ac;
+    background-color: var(--white);
+    text-align: center;
+    font-weight: 600
+}
+
+.x-order-tab .item.active span[data-v-239525cb] {
+    position: relative;
+    color: #373d42
+}
+
+.x-order-tab .item.active span[data-v-239525cb]:after {
+    position: absolute;
+    bottom: -.25641rem;
+    left: 50%;
+    transform: translate(-50%);
+    content: "";
+    display: block;
+    width: .61538rem;
+    border-bottom: .07692rem solid #f0b90b;
+    border-radius: .07692rem;
+    box-shadow: 0 0 .05128rem #ecb712
+}
+
+.x-order .timeInterval[data-v-239525cb] {
+    display: inline-block
+}
+
+.x-order-filter[data-v-239525cb] {
+    height: 1.53846rem;
+    padding: .25641rem 0;
+    position: sticky;
+    top: 1.15385rem;
+    background-color: var(--bmian);
+    z-index: 99;
+    margin: .15385rem 0
+}
+
+.x-order-filter .item[data-v-239525cb] {
+    padding: .25641rem;
+    border-radius: 1.53846rem;
+    background-color: #f7f8fc;
+    position: relative;
+    text-align: center
+}
+
+.x-order-list .item[data-v-239525cb] {
+    background: #fff;
+    border: .02564rem solid #ebecf0;
+    border-radius: .12821rem;
+    padding-bottom: .30769rem;
+    color: #a2a7ac
+}
+
+.x-order-list .item>div[data-v-239525cb] {
+    padding: 0 .30769rem
+}
+
+.x-order-list .item .btnList[data-v-239525cb] {
+    gap: .30769rem
+}
+
+.x-order-list .item .btnList>div[data-v-239525cb] {
+    height: 1.02564rem;
+    width: 50%;
+    border-radius: .20513rem;
+    border: .02564rem solid #E6E7EB;
+    background: #F5F6FA
+}
+
+.x-order-list .item .btnList>div.appeal[data-v-239525cb] {
+    color: #fc7878
+}
+
+.x-order-list .item .btnList>div.appeal3[data-v-239525cb],
+.x-order-list .item .btnList>div.appeal5[data-v-239525cb] {
+    background: #C6C5C2;
+    color: #7e7d7d
+}
+
+.x-order-list .item .btnList>div.service[data-v-239525cb] {
+    color: #1f262f
+}
+
+.x-order-list .item .head[data-v-239525cb] {
+    height: 1.38462rem;
+    line-height: 1.38462rem;
+    padding: 0 .30769rem;
+    background-color: #f7f8fc;
+    border-bottom: .02564rem solid #ebecf0
+}
+
+.x-order-list .item .lab[data-v-239525cb] {
+    font-size: .35897rem;
+    color: #a2a7ac
+}
+
+.x-order-list .item .type[data-v-239525cb] {
+    font-size: .41026rem;
+    color: var(--f666)
+}
+
+.x-order-list .item .type span[data-v-239525cb] {
+    color: #fff;
+    background: #fac10c;
+    display: inline-block;
+    padding: 0 .33333rem;
+    text-align: center;
+    height: .76923rem;
+    line-height: .76923rem;
+    border-radius: .12821rem
+}
+
+.x-order-list .item .type.active span[data-v-239525cb] {
+    color: #fff;
+    background: #2cc660
+}
+
+.x-order-list .item .state[data-v-239525cb] {
+    font-size: .38462rem
+}
+
+.x-order-list .item .state-3[data-v-239525cb],
+.x-order-list .item .state-14[data-v-239525cb],
+.x-order-list .item .state-20[data-v-239525cb] {
+    color: #63a1ff
+}
+
+.x-order-list .item .state-4[data-v-239525cb],
+.x-order-list .item .state-7[data-v-239525cb] {
+    color: #4cb957
+}
+
+.x-order-list .item .state-1[data-v-239525cb],
+.x-order-list .item .state-5[data-v-239525cb] {
+    color: #e7af00
+}
+
+.x-order-list .item .state-2[data-v-239525cb],
+.x-order-list .item .state-6[data-v-239525cb],
+.x-order-list .item .state-9[data-v-239525cb],
+.x-order-list .item .state-10[data-v-239525cb],
+.x-order-list .item .state-11[data-v-239525cb],
+.x-order-list .item .state-13[data-v-239525cb],
+.x-order-list .item .state-16[data-v-239525cb] {
+    color: #fc7878
+}
+
+.x-order-list .item .state-8[data-v-239525cb],
+.x-order-list .item .state-14[data-v-239525cb] {
+    color: #666
+}
+
+.x-order-list .item .moeny[data-v-239525cb] {
+    color: var(--f666)
+}
+
+.x-order-list .item .moeny span[data-v-239525cb] {
+    font-size: .41026rem;
+    font-weight: 700;
+    color: #1f262f
+}
+
+.x-order-list .item .time[data-v-239525cb],
+.x-order-list .item .order[data-v-239525cb] {
+    color: #1f262f;
+    font-size: .35897rem
+}

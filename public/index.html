@@ -1,43 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="./img/logo.png">
+  <meta name="google" content="notranslate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="manifest" href="/manifest.json?version=1.1">
+  <title>AR Wallet</title>
+  <!-- <script src="./public/language.js"></script> -->
+  <!-- <script src="https://unpkg.com/vconsole@3.15.1/dist/vconsole.min.js"></script> -->
+  <script type="text/javascript">
+    // VConsole will be exported to `window.VConsole` by default.
+    // var vConsole = new window.VConsole();
+    // console.log(language)
+    function getHashParams() {
+      let fragment = window.location.hash;
+      function parseHashParams(fragment) {
+        if (fragment) {
+          const queryStart = fragment.indexOf('?');
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+          if (queryStart !== -1) {
+            // 如果存在问号，则截取问号后的部分
+            fragment = fragment.substring(queryStart + 1);
+          }
+          var queryParams = fragment.split('&');
+          var params = {};
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+          queryParams.forEach(function (param) {
+            var keyValue = param.split('=');
+            params[keyValue[0]] = decodeURIComponent(keyValue[1]);
+          });
+          return params;
+        } else {
+          return {};
+        }
+      }
+      return parseHashParams(fragment);
+    }
+
+    const query = getHashParams();
+    if (query.token && query.refreshToken && query.memberId || query.token || query.returnUrl || query.lang) {
+      if (query.token) {
+        localStorage.setItem('token', JSON.stringify({
+          value: query.token,
+          expires: -1,
+        }))
+      }
+      if (query.refreshToken) {
+        localStorage.setItem('refresh_token', JSON.stringify({
+          value: query.refreshToken,
+          expires: -1,
+        }))
+      }
+      if (query.memberId) {
+        localStorage.setItem('memberId', JSON.stringify({
+          value: query.memberId,
+          expires: -1,
+        }))
+      }
+      if (query.returnUrl) {
+        localStorage.setItem('returnUrl', JSON.stringify({
+          value: query.returnUrl || '',
+          expires: -1,
+        }))
+      }
+      if (query.lang) {
+        const languages = { 0: 'en', 5: 'zh', 9: 'hd' }
+        localStorage.setItem('locale', JSON.stringify({
+          value: isNaN(Number(query.lang)) ? query.lang : languages[query.lang] || '',
+          expires: -1,
+        }))
+      }
+    }
+  </script>
+  <script type="module" crossorigin="" src="./assets/index-ec1e98fe.js"></script>
+  <link rel="stylesheet" href="./assets/index-dc833b72.css">
+  <style>
+    .lottie-animation-container {
+      width: var(--lottie-animation-container-width);
+      height: var(--lottie-animation-container-height);
+      background-color: var(--lottie-animation-container-background-color);
+      overflow: hidden;
+      margin: var(--lottie-animation-margin)
+    }
+
+    .lottie-animation-container svg {
+      transform: scale(var(--lottie-animation-scale))
+    }
+  </style>
+
+  <link rel="modulepreload" as="script" crossorigin="" href="https://arbpay.me/assets/home-6831eede.js">
+  <link rel="modulepreload" as="script" crossorigin="" href="https://arbpay.me/assets/UsePopup-d2c728d9.js">
+  <link rel="stylesheet" href="https://arbpay.me/assets/UsePopup-f036bb5c.css">
+  <link rel="modulepreload" as="script" crossorigin="" href="https://arbpay.me/assets/DisablePopup-fbe4e2fe.js">
+  <link rel="stylesheet" href="https://arbpay.me/assets/DisablePopup-e85248b1.css">
+  <link rel="modulepreload" as="script" crossorigin="" href="https://arbpay.me/assets/swiper-slide-a34d8858.js">
+  <link rel="modulepreload" as="script" crossorigin="" href="https://arbpay.me/assets/KycLinkPopup-0a9e2467.js">
+  <link rel="stylesheet" href="https://arbpay.me/assets/KycLinkPopup-660a4447.css">
+  <link rel="modulepreload" as="script" crossorigin="" href="https://arbpay.me/assets/Const-f950815b.js">
+  <link rel="stylesheet" href="https://arbpay.me/assets/home-58914166.css">
+  <link rel="stylesheet" href="https://arbpay.me/assets/swiper-6c721505.css">
+  <script src="https://www.googletagmanager.com/gtag/js?l=dataLayer&amp;id=G-WFYPV044M5" async=""></script>
+  <link rel="modulepreload" as="script" crossorigin="" href="https://arbpay.me/assets/login-c5578b44.js">
+  <link rel="modulepreload" as="script" crossorigin="" href="https://arbpay.me/assets/Lang-7cc72466.js">
+  <link rel="stylesheet" href="https://arbpay.me/assets/Lang-5a14ad37.css">
+  <link rel="modulepreload" as="script" crossorigin="" href="https://arbpay.me/assets/PhoneNumber-ff53c2a8.js">
+  <link rel="stylesheet" href="https://arbpay.me/assets/PhoneNumber-633e41e4.css">
+  <link rel="stylesheet" href="https://arbpay.me/assets/login-4a9c38ef.css">
+  <link rel="modulepreload" as="script" crossorigin="" href="https://arbpay.me/assets/order-db367dbc.js">
+  <link rel="modulepreload" as="script" crossorigin="" href="https://arbpay.me/assets/index-3b8e4704.js">
+  <link rel="modulepreload" as="script" crossorigin="" href="https://arbpay.me/assets/index-2bb74d8d.js">
+  <link rel="modulepreload" as="script" crossorigin="" href="https://arbpay.me/assets/useSell.hook-d0dcdc00.js">
+  <link rel="modulepreload" as="script" crossorigin="" href="https://arbpay.me/assets/useOrder.hook-5dbadd1b.js">
+  <link rel="stylesheet" href="https://arbpay.me/assets/order-3c1660f2.css">
+  <link rel="modulepreload" as="script" crossorigin="" href="https://arbpay.me/assets/task-469a848a.js">
+  <link rel="modulepreload" as="script" crossorigin="" href="https://arbpay.me/assets/index-5e915781.js">
+  <link rel="modulepreload" as="script" crossorigin="" href="https://arbpay.me/assets/tab_supreme_ungot-fb596a0b.js">
+  <link rel="modulepreload" as="script" crossorigin="" href="https://arbpay.me/assets/VipTask-9358f2b2.js">
+  <link rel="stylesheet" href="https://arbpay.me/assets/VipTask-7f242b2b.css">
+  <link rel="modulepreload" as="script" crossorigin="" href="https://arbpay.me/assets/index-fd806732.js">
+  <link rel="stylesheet" href="https://arbpay.me/assets/task-56566423.css">
+  <link rel="modulepreload" as="script" crossorigin="" href="https://arbpay.me/assets/main-589fc5b4.js">
+  <link rel="stylesheet" href="https://arbpay.me/assets/main-1fdf62e5.css">
+  <link rel="stylesheet" href="https://arbpay.me/assets/register-c2fff465.css">
+  <link rel="stylesheet" href="https://arbpay.me/assets/notice-6a9666f4.css">
+  <link rel="stylesheet" href="https://arbpay.me/assets/orderStatus-f8aa7b98.css">
+  <link rel="stylesheet" href="https://arbpay.me/assets/order-3c1660f2.css">
+  <link rel="stylesheet" href="https://arbpay.me/assets/statusStep-76ec0d16.css">
+  <link rel="stylesheet" href="https://arbpay.me/assets/detail-4688b08d.css">
+
+  <link rel="modulepreload" as="script" crossorigin="" href="https://arbpay.me/assets/verified-63c6024e.js">
+  <link rel="stylesheet" href="https://arbpay.me/assets/verified-9b4168c7.css">
+  <link rel="stylesheet" href="https://arbpay.me/assets/explain-8fa59158.css">
+
+  <link rel="stylesheet" href="https://arbpay.me/assets/collection-6dcfd65d.css">
+  <link rel="modulepreload" as="script" crossorigin="" href="https://arbpay.me/assets/paymentPwd-562f766f.js">
+  <link rel="stylesheet" href="https://arbpay.me/assets/paymentPwd-5f9144e5.css">
+
+
+  <link rel="stylesheet" href="https://arbpay.me/assets/transaction-36855ca8.css">
+  <link rel="stylesheet" href="https://arbpay.me/assets/announcement-f53ca817.css">
+  <link rel="stylesheet" href="https://arbpay.me/assets/securityCenter-4eb4e2bc.css">
+
+  <link rel="stylesheet" href="https://arbpay.me/assets/lang-cbd930ab.css">
+  <link rel="stylesheet" href="https://arbpay.me/assets/index-059737ad.css">
+  <link rel="stylesheet" href="https://arbpay.me/assets/index-d6fcaf5c.css">
+  <link rel="stylesheet" href="https://arbpay.me/assets/verified-9b4168c7.css">
+  <link rel="stylesheet" href="https://arbpay.me/assets/buyTutorial-4bc66463.css">
+  <link rel="stylesheet" href="https://arbpay.me/assets/seting-a73a6caf.css">
+  <link rel="stylesheet" href="https://arbpay.me/assets/sell-1d2e7668.css">
+  <link rel="stylesheet" href="https://arbpay.me/assets/arb-d17d708a.css">
+  <link rel="modulepreload" as="script" crossorigin="" href="https://arbpay.me/assets/userLevel-6c824548.js">
+  <link rel="stylesheet" href="https://arbpay.me/assets/userLevel-51efe838.css">
+  <link rel="stylesheet" href="https://arbpay.me/assets/details-f99fcfef.css">
+  <link rel="stylesheet" href="https://arbpay.me/assets/rule-0cb5d6a2.css">
+  <link rel="stylesheet" href="https://arbpay.me/assets/item-f9321cab.css">
+  <link rel="stylesheet" href="https://arbpay.me/assets/teamTutorial-606221c2.css">
+  <link rel="stylesheet" href="https://arbpay.me/assets/details-76342c7f.css">
+
+
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root">
+    <h1>CSS Debug Test</h1>
+    <div class="debug-box">If you see BLUE BOX → CSS is working ✅</div>
+  </div>
+
+  <!-- JS Files -->
+  <script type="module" crossorigin src="./assets/index-ec1e98fe.js"></script>
+
+  <!-- External scripts -->
+  <script src="https://www.googletagmanager.com/gtag/js?l=dataLayer&amp;id=G-WFYPV044M5" async></script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
