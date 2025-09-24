@@ -1,0 +1,58 @@
+.x-payment[data-v-b2875231] {
+    padding: .82051rem .82051rem 1.74359rem
+}
+
+.x-payment-btn[data-v-b2875231] {
+    height: 1.23077rem
+}
+
+.x-payment-btn.active[data-v-b2875231] {
+    height: 1.4359rem;
+    border-radius: 0
+}
+
+.x-payment-box[data-v-b2875231],
+.x-payment-tip[data-v-b2875231] {
+    border-radius: .12821rem
+}
+
+.x-payment-box .item[data-v-b2875231] .van-password-input,
+.x-payment-tip .item[data-v-b2875231] .van-password-input {
+    margin: 0
+}
+
+.x-payment-box .item label[data-v-b2875231],
+.x-payment-tip .item label[data-v-b2875231] {
+    margin-bottom: .30769rem;
+    display: block
+}
+
+.x-payment-box .item span[data-v-b2875231],
+.x-payment-tip .item span[data-v-b2875231] {
+    font-size: .30769rem;
+    color: #888
+}
+
+.x-payment-tip lable[data-v-b2875231] {
+    font-size: .38462rem;
+    color: #04091c
+}
+
+.x-payment-tip .input[data-v-b2875231] {
+    border-radius: .20513rem;
+    background: #F5F6FA;
+    height: 1.23077rem
+}
+
+.x-payment-tip .pwd[data-v-b2875231] {
+    color: #f5ba00;
+    font-size: .35897rem
+}
+
+.x-payment[data-v-b2875231] .van-password-input__item {
+    border-radius: .10256rem;
+    border: .02564rem solid #E6E7EB;
+    background: #F5F6FA
+}
+
+

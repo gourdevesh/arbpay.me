@@ -19,7 +19,7 @@
     z-index: 99999
 }
 
-.sever[data-v-9b133d13] {
+.sever[data-v-7472f68c] {
     border-radius: .20513rem;
     background: #FAC10C;
     color: #fff;
@@ -31,17 +31,17 @@
     padding-top: .05128rem
 }
 
-.sever svg[data-v-9b133d13] {
+.sever svg[data-v-7472f68c] {
     display: block;
     margin: 0 auto
 }
 
-.sever span[data-v-9b133d13] {
+.sever span[data-v-7472f68c] {
     display: block;
     line-height: .25641rem
 }
 
-.right[data-v-9b133d13] {
+.right[data-v-7472f68c] {
     height: .82051rem;
     background-color: #f3f3f5;
     border-radius: .82051rem;
@@ -50,12 +50,12 @@
     padding: 0 .35897rem
 }
 
-.right .img[data-v-9b133d13] {
+.right .img[data-v-7472f68c] {
     width: .51282rem;
     height: .51282rem
 }
 
-.right .line[data-v-9b133d13] {
+.right .line[data-v-7472f68c] {
     display: block;
     height: .46154rem;
     margin: 0 .25641rem;
@@ -71,6 +71,7 @@
     top: 0;
     left: auto;
     z-index: 9999;
+    padding: 0 .30769rem
 }
 
 .navbar .logo[data-v-b0a7af40] {
@@ -88,7 +89,6 @@
 [data-v-058705f4] .x-popup {
     border-radius: .12821rem
 }
-
 
 [data-v-058705f4] .x-popup .title {
     height: 1.4359rem;
@@ -182,7 +182,7 @@
 
 .img.active[data-v-118c888b] {
     height: .61538rem
-}z
+}
 
 .img-wrap[data-v-118c888b] {
     height: .76923rem;
@@ -3221,9 +3221,6 @@ ul {
     --van-number-keyboard-key-background: var(--van-gray-7);
     --van-number-keyboard-key-active-color: var(--van-gray-6)
 }
-.navbar, .mian, .van-tabbar, .nav, .x-popup, .van-number-keyboard {
-    width: 10rem !important;
-}
 
 .van-number-keyboard {
     position: fixed;
@@ -5455,7 +5452,7 @@ ul {
 .van-tabs__nav {
     position: relative;
     display: flex;
-    background: var(--van-tabs-nav-background);
+    background: none;
     -webkit-user-select: none;
     user-select: none
 }
@@ -8844,14 +8841,13 @@ body {
 }
 
 #app {
-  width: 100%;
-min-height: 100vh;
-  margin: 0 auto;
-  background: var(--bmian);
-  color: var(--balck);
-  font-size: 0.35897rem;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0 auto;
+    background: var(--bmian);
+    color: var(--balck);
+    font-size: .35897rem
 }
-
 
 input {
     width: 100%;
@@ -8864,13 +8860,13 @@ input:focus {
     border: .02564rem solid var(--yellow-1)
 }
 
-/* .navbar,
+.navbar,
 .mian,
 .van-tabbar,
 .nav,
 .x-popup {
     width: 10rem
-} */
+}
 
 .van-popup--bottom,
 .van-number-keyboard {
@@ -8884,24 +8880,8 @@ input:focus {
 .nav,
 .x-popup,
 .van-number-keyboard {
-  width: 10rem !important;
+    width: 10rem !important
 }
-
-/* Responsive adjustment */
-@media screen and (max-width: 768px) {
-  .navbar,
-  .mian,
-  .van-tabbar,
-  .nav,
-  .x-popup,
-  .van-number-keyboard {
-    width: 100% !important;
-  }
-}
-
-
-
-
 
 .van-popup,
 .van-overlay {
@@ -9008,151 +8988,15 @@ input:focus {
     }
 }
 
-@media screen and (min-width: 400px) {
-    html {
-        font-size: 2.4rem !important;
-        width: 10rem;
-        margin: 0 auto;
-        background-color: #9195a3;
-        overflow: auto;
-        width: 100%
-    }
-/* 
+@media screen and (min-width: 500px) {
     #app {
         width: 10rem
-    } */
-
-    body,
-    html {
-        position: relative
-    }
-
-    body {
-        overflow-y: scroll;
-        width: 100%
-    }
-
-    body::-webkit-scrollbar {
-        display: none
     }
 
     .van-popup {
         max-width: 10rem
     }
 }
-
-@media screen and (min-width: 360px) {
-    html {
-        font-size: 2.4rem !important;
-        background-color: #9195a3;
-        width: 100%
-    }
-
-   
-
-    body,
-    html {
-        position: relative
-    }
-
-    body {
-        overflow-y: scroll;
-        width: 100%
-    }
-
-    body::-webkit-scrollbar {
-        display: none
-    }
-
-    
-}
-
-.content {
-  padding: 16px;
-  border-radius: 8px;
-  margin-bottom: 16px;
-}
-
-.content-title {
-  font-weight: bold;
-  font-size: 16px;
-  margin-bottom: 8px;
-}
-
-.content-detail {
-  font-size: 14px;
-  line-height: 1.5;
-  color: #555;
-}
-.title {
-  display: flex;
-  align-items: center;
-  margin-bottom: 12px;
-  margin-left: 12px;
-}
-
-.faq-text {
-  display: -webkit-box;
-  -webkit-line-clamp: 4;    /* default 4 line */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.faq-text.expanded {
-  -webkit-line-clamp: unset; /* remove line limit */
-  overflow: visible;
-}
-
-.van-text-ellipsis__action {
-  color: #775de1;
-  cursor: pointer;
-  margin-top: 6px;
-  font-weight: 500;
-}
-
-.look {
-  display: inline-block;
-}
-
-.title-icon {
-  width: 24px;
-  height: 24px;
-  margin-right: 8px;
-}
-
-.title-txt {
-  font-size: 16px;
-  font-weight: bold;
-  color: #333;
-}
-
-
-/* Active header background color */
-.van-collapse-item.active .van-collapse-item__title {
-  background-color: #FFD700; /* yellow */
-}
-
-
-/* Plus/Minus icons */
-.van-collapse-item__title .van-icon-plus::before {
-  content: "+";
-}
-
-.van-collapse-item__title .van-icon-minus::before {
-  content: "-";
-}
-
-/* @media screen and (min-width: 360px) {
- .navbar,
-.main,
-.van-tabbar,
-.nav,
-.x-popup,
-.van-number-keyboard {
-}
-
-} */
 
 @font-face {
     font-family: Roboto;
@@ -9845,8 +9689,7 @@ input:focus {
 
 .mt30 {
     margin-top: .76923rem !important;
-        margin-bottom: 30px;
-
+    margin-bottom: 10%;
 }
 
 .pt30 {
@@ -10530,16 +10373,8 @@ input:focus {
 }
 
 .x-row {
-  display: flex;
-  margin-right: 0;  /* 👈 none ki jagah 0 */
+    display: flex
 }
-
-@media screen and (min-width: 360px) {
-  .x-row {
-    margin-right: 5%;  
-  }
-}
-
 
 .x-row-middle {
     align-items: center
@@ -10616,8 +10451,7 @@ input:focus {
     border-color: var(--yellow-1);
     height: 1.02564rem;
     color: var(--f222);
-    font-weight: 600;
-    margin-bottom: 10%;
+    font-weight: 600
 }
 
 .x-btn:active {
@@ -23450,9 +23284,4 @@ textarea[data-v-b1cdd41a]:active {
     top: var(--callTop, calc(50% - 18rem)) !important;
     width: var(--callWidth, 50rem) !important;
     height: var(--callHeight, 36rem) !important
-}
-
-/* App.css या global CSS में डालो */
-.Toastify__toast {
-  font-size: 14px !important; 
 }

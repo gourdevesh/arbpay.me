@@ -30,67 +30,317 @@ import Details from "./Component/Task/Details";
 import TeamTutorial from "./Component/Main/TeamTutorial";
 import SellDetailOrder from "./Component/SellDetailsOrder";
 import VipTask from "./Component/Task/VipTask";
-
+import AddPaymentMethod from "./Component/Main/AddPaymenyMethod";
+import AuthorizeKyc from "./Component/Main/AuthorizeKyc";
+import EventDetail from "./Component/Main/EventDetail";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ForgetPassword from "./Component/ForgetPassWord";
+import ProtectedRoute from "./Component/ProtectedRoute";
+import PublicRoute from "./Component/PublicRoute";
+import ChangeName from "./Component/Main/ChangeName";
+import Avatar from "./Component/Main/Avatar";
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<RegisterForm />} />
-        <Route path="/main" element={<Main />} />
-        <Route path="/task" element={<Task />} />
-        <Route path="/order" element={<Order />} />
-        <Route path="/buyTutorial" element={<BuyTutorial />} />
-        <Route path="/sell-tutorial" element={<SellTutorial />} />
-        <Route path="/notice" element={<Notice />} />
-        <Route path="/order-complete" element={<OrderComplete />} />
-        <Route path="/collection" element={<Collection />} />
-        <Route path="/paymentPwd" element={< PaymentPwd />} />
-        <Route path="/explain" element={< Explain />} />
-        <Route path="/transaction" element={<Transaction />} />
-        <Route path="/setting" element={<Setting />} />
-        <Route path="/announcement" element={<Announcement />} />
+      <ToastContainer />
+        {/* Public Routes */}
+        <Routes>
+        {/* Public Routes */}
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <PublicRoute>
+              <RegisterForm />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/forget-password"
+          element={
+            <PublicRoute>
+              <ForgetPassword />
+            </PublicRoute>
+          }
+        />
 
-        <Route path="/securityCenter" element={<SecurityCenter />} />
-        <Route path="/language" element={<Language />} />
-        <Route path="/activity" element={<Activity />} />
-        <Route path="/team" element={<Team />} />
-        <Route path="/sell" element={<Sell />} />
-        <Route path="/arb" element={<Arb />} />
-        <Route path="/arbbuy" element={<ArbBuy />} />
-        <Route path="/user-level" element={<UserLevel />} />
-        <Route path="/rule" element={<Rule />} />
-        <Route path="/task-detail" element={<Details />} />
-                <Route path="/teamTutorial" element={<TeamTutorial />} />
+        {/* Protected Routes */}
+        <Route
+          path="/main"
+          element={
+            <ProtectedRoute>
+              <Main />
+            </ProtectedRoute>
+          }
+        />
 
-                <Route path="/sell-detail-order" element={<SellDetailOrder />} />
+         <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
 
-                <Route path="/VipTak" element={<VipTask />} />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <Route path="/verified" element={<Verified />} />
-
-
-
-
+        <Route
+          path="/task"
+          element={
+            <ProtectedRoute>
+              <Task />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/order"
+          element={
+            <ProtectedRoute>
+              <Order />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/buyTutorial"
+          element={
+            <ProtectedRoute>
+              <BuyTutorial />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/sell-tutorial"
+          element={
+            <ProtectedRoute>
+              <SellTutorial />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/notice"
+          element={
+            <ProtectedRoute>
+              <Notice />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/order-complete"
+          element={
+            <ProtectedRoute>
+              <OrderComplete />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/collection"
+          element={
+            <ProtectedRoute>
+              <Collection />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/paymentPwd"
+          element={
+            <ProtectedRoute>
+              <PaymentPwd />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/explain"
+          element={
+            <ProtectedRoute>
+              <Explain />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/transaction"
+          element={
+            <ProtectedRoute>
+              <Transaction />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/setting"
+          element={
+            <ProtectedRoute>
+              <Setting />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/announcement"
+          element={
+            <ProtectedRoute>
+              <Announcement />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/securityCenter"
+          element={
+            <ProtectedRoute>
+              <SecurityCenter />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/language"
+          element={
+            <ProtectedRoute>
+              <Language />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/activity"
+          element={
+            <ProtectedRoute>
+              <Activity />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/team"
+          element={
+            <ProtectedRoute>
+              <Team />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/sell"
+          element={
+            <ProtectedRoute>
+              <Sell />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/arb"
+          element={
+            <ProtectedRoute>
+              <Arb />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/arbbuy"
+          element={
+            <ProtectedRoute>
+              <ArbBuy />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/user-level"
+          element={
+            <ProtectedRoute>
+              <UserLevel />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/rule"
+          element={
+            <ProtectedRoute>
+              <Rule />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/task-detail"
+          element={
+            <ProtectedRoute>
+              <Details />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/teamTutorial"
+          element={
+            <ProtectedRoute>
+              <TeamTutorial />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/sell-detail-order"
+          element={
+            <ProtectedRoute>
+              <SellDetailOrder />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/VipTak"
+          element={
+            <ProtectedRoute>
+              <VipTask />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/add-payment"
+          element={
+            <ProtectedRoute>
+              <AddPaymentMethod />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/authorizekyc"
+          element={
+            <ProtectedRoute>
+              <AuthorizeKyc />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/event-detail"
+          element={
+            <ProtectedRoute>
+              <EventDetail />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/verified"
+          element={
+            <ProtectedRoute>
+              <Verified />
+            </ProtectedRoute>
+          }
+        />
+         <Route
+          path="/change-name"
+          element={
+            <ProtectedRoute>
+              <ChangeName />
+            </ProtectedRoute>
+          }
+        />
+         <Route
+          path="/avatar"
+          element={
+            <ProtectedRoute>
+              <Avatar />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
+      
     </Router>
   );
 }

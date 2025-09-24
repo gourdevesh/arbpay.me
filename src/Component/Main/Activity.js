@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Activity = () => {
+    const navigate = useNavigate()
   return (
   <div id="app" data-v-app="">
         <div>
@@ -15,7 +17,7 @@ const Activity = () => {
                                     fill="#9399A6"></path>
                             </svg></div>
                         <div className="van-nav-bar__title van-ellipsis"><span data-v-cdb55647="">Activity</span></div>
-                        <div className="van-nav-bar__right van-haptics-feedback">
+                        <div className="van-nav-bar__right van-haptics-feedback"  >
                             <div data-v-9b133d13="" data-v-cdb55647="" className="x-row x-row-between x-row-middle">
                                 <div data-v-9b133d13="" className="right x-row x-row-middle-center"><img data-v-9b133d13=""
                                         className="refresh" src="https://arbpay.me/assets/refresh-4be8557e.svg"/><i
@@ -27,20 +29,29 @@ const Activity = () => {
                 </div>
                 <div data-v-92188dff="" className="x-activity">
                     <div data-v-92188dff="" role="feed" className="van-list" aria-busy="false">
-                        <div data-v-92188dff="" className="item">
+                        <div data-v-92188dff="" className="item" >
                             <div data-v-92188dff="" className="title">Earn More Rewards on Every Successful Buy &amp; Sell!
-                            </div><img data-v-92188dff="" className="img"
-                                src="https://oss.arbpay.me/vc-upload-1755574558423-10.jpg"/>
+                            </div  >
+                            <div style={{cursor:"pointer"}} onClick={()=>navigate("/event-detail")} >                 
+                            <img  data-v-92188dff="" className="img"
+                                src="https://oss.arbpay.me/vc-upload-1755574558423-10.jpg"/>  </div>
+
                         </div>
                         <div data-v-92188dff="" className="item">
-                            <div data-v-92188dff="" className="title">Invite Friends &amp; Earn Exclusive Rewards!</div><img
+                            <div data-v-92188dff="" className="title">Invite Friends &amp; Earn Exclusive Rewards!</div>
+                                                        <div style={{cursor:"pointer"}} onClick={()=>navigate("/event-detail")} >                 
+
+                            <img
                                 data-v-92188dff="" className="img"
-                                src="https://oss.arbpay.me/vc-upload-1756352289001-11.jpg"/>
+                                src="https://oss.arbpay.me/vc-upload-1756352289001-11.jpg"/></div>
                         </div>
                         <div data-v-92188dff="" className="item">
                             <div data-v-92188dff="" className="title">Invite Friends &amp; Earn Up To +7,000 ARB Rewards!
-                            </div><img data-v-92188dff="" className="img"
-                                src="https://oss.arbpay.me/vc-upload-1756309821773-19.jpg"/>
+                            </div>
+                                                        <div style={{cursor:"pointer"}} onClick={()=>navigate("/event-detail")} >                 
+
+                            <img data-v-92188dff="" className="img"
+                                src="https://oss.arbpay.me/vc-upload-1756309821773-19.jpg"/></div>
                         </div>
                         <div className="van-list__finished-text">No more</div>
                         <div className="van-list__placeholder"></div>

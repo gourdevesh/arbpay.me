@@ -1,0 +1,37 @@
+.x-avatar[data-v-d47d827a] {
+    padding: .46154rem .38462rem
+}
+
+.x-avatar .item[data-v-d47d827a] {
+    width: 2.10256rem;
+    height: 2.10256rem;
+    margin-bottom: .25641rem;
+    position: relative;
+    border-radius: .30769rem
+}
+
+.x-avatar .item img[data-v-d47d827a] {
+    width: 2.10256rem;
+    height: 2.10256rem;
+    border-radius: .25641rem;
+    display: block
+}
+
+.x-avatar .item.acitve[data-v-d47d827a]:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2rem;
+    width: 2rem;
+    border: .10256rem solid var(--yellow-1);
+    border-radius: .25641rem;
+    z-index: 10
+}
+
+.x-avatar-btn[data-v-d47d827a] {
+    height: 1.23077rem;
+    line-height: 1.23077rem;
+    border-radius: .20513rem
+}

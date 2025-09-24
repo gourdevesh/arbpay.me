@@ -1,49 +1,105 @@
 
 import React, { useState } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
+    const BASE_URL = process.env.REACT_APP_BASE_API_URL;
+
     const [phone, setPhone] = useState("");
-    const [code, setCode] = useState("");
+    const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [inviteCode, setInviteCode] = useState("");
-    const [agreed, setAgreed] = useState(false);
+    const [email, setEmail] = useState("");
+    const navigate = useNavigate()
+
+    const [loading, setLoading] = useState(false);
+
+    const handleRegister = async () => {
+        if (password !== confirmPassword) {
+            toast.error("Passwords do not match", { position: "top-center", autoClose: 3000 });
+            return;
+        }
+
+        try {
+            setLoading(true);
+            const formData = new FormData();
+            formData.append("name", name);
+            formData.append("mobile", phone);
+            formData.append("password", password);
+            formData.append("referral_code", inviteCode);
+            formData.append("email", email);
+            const response = await axios.post(
+                `${BASE_URL}/register`,
+                formData,
+                { headers: { "Content-Type": "multipart/form-data" } }
+            );
+
+            if (response.data.status) {
+                toast.success(response.data.message, { position: "top-center", autoClose: 3000 });
+                navigate("/login");
+            } else {
+                toast.error(response.data.message, { position: "top-center", autoClose: 3000 });
+            }
+        } catch (err) {
+            if (err.response?.status === 409) {
+                toast.error(err.response.data.message || "Conflict occurred", {
+                    position: "top-center",
+                    autoClose: 3000,
+                });
+            } else if (err.response?.data?.error) {
+                const errors = err.response.data.error;
+                Object.keys(errors).forEach((key) => {
+                    errors[key].forEach((msg) =>
+                        toast.error(msg, { position: "top-center", autoClose: 3000 })
+                    );
+                });
+            } else {
+                toast.error("Something went wrong!", { position: "top-center", autoClose: 3000 });
+            }
+        } finally {
+            setLoading(false);
+        }
+    };
+
 
     return (
- <div id="app" data-v-app="">
-        <div>
-            <div data-v-1dea78b6="" class="container pt-5">
-                <div data-v-fc21fc30="" class="x-register">
+        <div id="app" data-v-app="">
+            <div>
+                <div data-v-1dea78b6="" class="container pt-5">
+                    <div data-v-fc21fc30="" class="x-register">
                         <header className="header x-row x-row-middle x-row-between px20 py10">
-      {/* Back */}
-      <div className="brack cursor-pointer">
-        back
-      </div>
+                            {/* Back */}
+                            <div className="brack cursor-pointer" style={{ marginLeft: "2%" }}>
+                                back
+                            </div>
 
-      {/* Title */}
-      <div className="title">Register</div>
+                            {/* Title */}
+                            <div className="title">Register</div>
 
-      {/* Language Selector */}
-      <div className="header-lang x-row x-row-middle-center">
-        <div className="x-lang x-row x-row-middle-center">
-          <span className="van-popover__wrapper">
-            <div className="x-row x-row-middle-center box">
-              <img
-                src="https://arbpay.me/assets/lang-d8031c6f.svg"
-                className="icon mr5"
-                alt="Language"
-              />
-              English
-            </div>
-          </span>
-        </div>
-      </div>
-    </header>
-                    <div data-v-fc21fc30="" class="x-from pr20 pl20">
-                        <div data-v-90b6c219="" data-v-fc21fc30="" class="x-from-item"><label data-v-90b6c219=""
+                            {/* Language Selector */}
+                            <div className="header-lang x-row x-row-middle-center">
+                                <div className="x-lang x-row x-row-middle-center">
+                                    <span className="van-popover__wrapper">
+                                        <div className="x-row x-row-middle-center box">
+                                            <img
+                                                src="https://arbpay.me/assets/lang-d8031c6f.svg"
+                                                className="icon mr5"
+                                                alt="Language"
+                                            />
+                                            English
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                        </header>
+                        <div data-v-fc21fc30="" class="x-from pr20 pl20">
+                            <div data-v-90b6c219="" data-v-fc21fc30="" class="x-from-item"><label data-v-90b6c219=""
                                 class="x-row x-row-middle">Phone Number</label>
-                            <div data-v-90b6c219="" class="phone-number">
-                                <div class="icon x-row x-row-middle" data-v-90b6c219=""><svg width="32" class="mr12"
+                                <div data-v-90b6c219="" class="phone-number">
+                                    <div class="icon x-row x-row-middle" data-v-90b6c219=""><svg width="32" class="mr12"
                                         height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"
                                         data-v-90b6c219="">
                                         <g clip-path="url(#clip0_14421_11016)" data-v-90b6c219="">
@@ -214,55 +270,83 @@ const RegisterForm = () => {
                                             </clipPath>
                                         </defs>
                                     </svg> +91 </div><input data-v-90b6c219="" class="x-input" type="text"
-                                    placeholder="Please enter your phone number."
-                                    oninput="value=value.replace(/\D/g,'')" maxlength="10"/>
+                                        placeholder="Please enter your phone number."
+                                        value={phone}
+                                        onChange={(e) => setPhone(e.target.value)}
+                                        oninput="value=value.replace(/\D/g,'')" maxlength="10" />
+                                </div>
                             </div>
-                        </div>
-                        <div data-v-9e71ad3c="" data-v-fc21fc30="" class="x-send mb10"><label data-v-9e71ad3c=""
-                                class="x-send-lab">Verification Code</label>
-                            <div data-v-9e71ad3c="" class="x-send-box"><input data-v-9e71ad3c="" class="x-input input"
-                                    type="text" placeholder="Enter Verification Code" maxlength="6"
-                                    oninput="value=value.replace(/\D/g,'')"/>
-                                <div data-v-9e71ad3c="" class="btn action">Send</div>
+                            <div data-v-9e71ad3c="" data-v-fc21fc30="" class="x-send mb10"><label data-v-9e71ad3c=""
+                                class="x-send-lab">Name</label>
+                                <div data-v-9e71ad3c="" class="x-input input"
+                                ><input data-v-9e71ad3c="" class="x-input input"
+                                    type="text" placeholder="Enter name " required value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                    />
+                                    {/* <div data-v-9e71ad3c="" class="btn action">Send</div> */}
+                                </div>
+                                {/* <p data-v-9e71ad3c="" class="x-send-tip">Can't receive the verification code?<span
+                                    data-v-9e71ad3c="">Customer Service</span></p> */}
                             </div>
-                            <p data-v-9e71ad3c="" class="x-send-tip">Can't receive the verification code?<span
-                                    data-v-9e71ad3c="">Customer Service</span></p>
-                        </div>
-                        <div data-v-fc21fc30="" class="x-from-item"><label data-v-fc21fc30=""
-                                class="x-row x-row-middle">Login Password</label>
-                            <div data-v-fc21fc30="" class="pwd"><input data-v-fc21fc30="" class="x-input"
+
+                            <div data-v-9e71ad3c="" data-v-fc21fc30="" class="x-send mb10"><label data-v-9e71ad3c=""
+                                class="x-send-lab">Email</label>
+                                <div data-v-9e71ad3c="" class="x-send-box"><input data-v-9e71ad3c="" class="x-input input"
+                                    type="text" placeholder="Enter email " value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    oninput="value=value.replace(/\D/g,'')" />
+                                </div>
+
+                            </div>
+
+
+                            <div data-v-fc21fc30="" class="x-from-item"><label data-v-fc21fc30=""
+                                class="x-row x-row-middle"> Password</label>
+                                <div data-v-fc21fc30="" class="pwd"><input data-v-fc21fc30="" class="x-input"
                                     type="password" oninput="value=value.replace(/[\W]/g,'')"
-                                    placeholder="Please enter your login password." maxlength="32"/><span
-                                    data-v-fc21fc30="" class="eye"></span></div>
-                        </div>
-                        <div data-v-fc21fc30="" class="x-from-item"><label data-v-fc21fc30=""
+                                    placeholder="Please enter your login password." value={password}
+                                    onChange={(e) => setPassword(e.target.value)} maxlength="32" /><span
+                                        data-v-fc21fc30="" class="eye"></span></div>
+                            </div>
+                            <div data-v-fc21fc30="" class="x-from-item"><label data-v-fc21fc30=""
                                 class="x-row x-row-middle">Confirm Password</label>
-                            <div data-v-fc21fc30="" class="pwd"><input data-v-fc21fc30="" class="x-input"
+                                <div data-v-fc21fc30="" class="pwd"><input data-v-fc21fc30="" class="x-input"
                                     type="password" oninput="value=value.replace(/[\W]/g,'')"
-                                    placeholder="Please enter the confirmation password." maxlength="32"/><span
-                                    data-v-fc21fc30="" class="eye"></span></div>
-                        </div>
-                        <div data-v-fc21fc30="" class="x-from-item"><label data-v-fc21fc30=""
+                                    value={confirmPassword}
+                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                    placeholder="Please enter the confirmation password." maxlength="32" /><span
+                                        data-v-fc21fc30="" class="eye"></span></div>
+                            </div>
+                            <div data-v-fc21fc30="" class="x-from-item"><label data-v-fc21fc30=""
                                 class="x-row x-row-middle">Invitation Code</label><input data-v-fc21fc30=""
-                                class="x-input" type="text" oninput="value=value.replace(/[\W]/g,'')" maxlength="12"
-                                placeholder="Please enter the invitation code./"/></div>
-                        <div data-v-fc21fc30="" class="x-row x-row-middle mt20 mb56 read">
-                            <div data-v-fc21fc30="" role="checkbox" class="van-checkbox" tabindex="0"
-                                aria-checked="false">
-                                <div class="van-checkbox__icon van-checkbox__icon--round"><i
+                                    class="x-input" type="text" oninput="value=value.replace(/[\W]/g,'')" maxlength="12"
+                                    placeholder="Please enter the invitation code./" value={inviteCode}
+                                    onChange={(e) => setInviteCode(e.target.value)} /></div>
+                            {/* <div data-v-fc21fc30="" class="x-row x-row-middle mt20 mb56 read">
+                                <div data-v-fc21fc30="" role="checkbox" class="van-checkbox" tabindex="0"
+                                    aria-checked="false">
+                                    <div class="van-checkbox__icon van-checkbox__icon--round"><i
                                         class="van-badge__wrapper van-icon van-icon-success"></i>
-                                </div><span class="van-checkbox__label">I have agreed to and read</span>
-                            </div><span data-v-fc21fc30="">the 《User Agreement》</span>
-                        </div><button data-v-fc21fc30="" type="button"
-                            class="van-button van-button--primary van-button--normal van-button--block x-btn btn">
-                            <div class="van-button__content"><span
-                                    class="van-button__text">Register</span></div>
-                        </button>
+                                    </div><span class="van-checkbox__label">I have agreed to and read</span>
+                                </div><span data-v-fc21fc30="">the 《User Agreement》</span>
+                            </div> */}
+                            <button
+                                type="button"
+                                className="van-button van-button--primary van-button--normal van-button--block x-btn btn"
+                                onClick={handleRegister}
+                                disabled={loading}
+                            >
+                                <div className="van-button__content">
+                                    <span className="van-button__text">      {loading ? "Registering..." : "Register"}
+                                    </span>
+                                </div>
+                            </button>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
     );

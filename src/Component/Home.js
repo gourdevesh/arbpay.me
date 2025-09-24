@@ -223,9 +223,12 @@ service Live Chat. can reset your payment password by going to 'Settings' > 'Res
             </div>
             <div style={{ position: "relative", width: "100%", maxWidth: "600px", margin: "0 auto", marginTop: '3%' }}>
               <img
+
+              onClick={()=>navigate("/event-detail")}
                 src={banners[currentIndex]}
                 alt={`banner-${currentIndex}`}
                 style={{
+                  cursor:"pointer",
                   width: "100%", borderRadius: "10px", transition: "0.5s", border: "1px solid gray" // <-- colored border
                 }}
               />
